@@ -30,6 +30,8 @@ fn Canvas Generator.gen(&self, Allocator alloc, uint width, uint height)
 }
 
 PatternFn[] patterns @local = {
+    &bg,
+    &gradient,
     &checkerboard,
     &bubbles,
     &clouds,
