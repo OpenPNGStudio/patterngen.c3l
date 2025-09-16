@@ -7,7 +7,7 @@ import raylib5::rl;
 
 fn int main(String[] args)
 {
-    Generator gen = patterngen::init("Sharks are very cool sea creatures!");
+    Generator gen = patterngen::init("2fb6cc6c9a3390c574cb9cbab5473095d77bd2a8");
 
     int screenWidth = 800;
     int screenHeight = 450;

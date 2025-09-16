@@ -5,10 +5,10 @@ import std::math::random;
 import std::core::mem::allocator;
 
 struct Generator {
-    SimpleRandom rng;
+    Pcg128Random rng;
 }
 
-alias PatternFn = fn void(Generator*, Canvas *);
+alias PatternFn = fn void(Random, Canvas *);
 
 fn Generator init(String seed)
 {
@@ -24,11 +24,13 @@ fn Canvas Generator.gen(&self, Allocator alloc, uint width, uint height)
     c.init(width, height, alloc);
 
     usz i = random::next(&self.rng, patterns.len);
-    patterns[i](self, &c);
+    patterns[i](&self.rng, &c);
 
     return c;
 }
 
 PatternFn[] patterns @local = {
-    &checkerboard
+    &checkerboard,
+    &bubbles,
+    &clouds,
 };

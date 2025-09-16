@@ -4,9 +4,7 @@ module patterngen::drw;
 import std::math;
 import std::core::mem::allocator;
 
-struct Color {
-    char r, g, b, a;
-}
+alias Color = char[<4>];
 
 struct Vec2 {
     uint x, y;
@@ -25,6 +23,13 @@ fn void Canvas.init(&self, uint width, uint height, Allocator alloc)
     self.canvas = (Color*) self.image.ptr;
     self.width = width;
     self.height = height;
+}
+
+fn void Canvas.clear(&self, Color c)
+{
+    for (uint i = 0; i < self.height * self.width; i++) {
+        self.canvas[i] = c;
+    }
 }
 
 fn void Canvas.draw_pixel(&self, uint x, uint y, Color c) @inline
