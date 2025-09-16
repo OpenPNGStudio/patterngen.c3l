@@ -1,0 +1,5 @@
+build/
+out/
+example/build
+example/out
+example/lib/*.c3l
